@@ -1,0 +1,38 @@
+﻿@model IQueryable<Pohui.Models.Creative>
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+   
+        <div class="col-md-10" id="test">
+        </div>
+   
+    <div class="col-md-2" >
+         <div id="Diagram"></div>
+        <div id="Tag"></div>
+    </div> </div>
+
+
+<script type="text/javascript">
+    $.ajax({
+        url: '/Home/Diagram',
+        success: function (response) {
+            $("#Diagram").html(response);
+        }
+    });
+    $.ajax({
+        url: '/Creative/TagCloud',
+        success: function (response) {
+            $("#Tag").html(response);
+        }
+    });
+
+</script>
+<script>
+    $.ajax({
+        url: '/Creative/ViewCreatives',
+        success: function (response) {
+            $("#test").html(response);
+        }
+    });
+</script>

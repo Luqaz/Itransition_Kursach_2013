@@ -1,0 +1,16 @@
+﻿@model Pohui.Models.User
+@{
+    ViewBag.Title = "ProfilePage";
+}
+
+<h2>@Model.Login 's Page</h2>
+
+<div class="col-lg-10" id="ID"></div>
+<script type="text/javascript">
+        $.ajax({
+            url: '/Creative/ViewCreatives?id=@Model.UserId',
+            success: function (response) {
+                $("#ID").html(response);
+            }
+        });
+</script>

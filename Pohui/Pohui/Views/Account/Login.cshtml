@@ -1,0 +1,49 @@
+﻿@using MyRes = Resources.Resource
+@model Pohui.Models.LoginModel
+
+@{
+    ViewBag.Title = "Выполнить вход";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+<div class="col-lg-10">
+    <div class="well">
+        <form class="bs-example form-horizontal">
+            <fieldset>
+                <legend>Login Form</legend>
+                <div class="form-group">
+                    <p class="col-lg-3 control-label">@MyRes.Name</p>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.Login, new { @class = "form-control", @placeholder = @MyRes.Name })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="col-lg-3 control-label">@MyRes.Password</p>
+                    <div class="col-lg-8">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = @MyRes.Password })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-6">
+                        <input type="submit" class="btn btn-success" value="Submit" />
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+    <p>
+        @Html.ActionLink(@MyRes.Register, "Register"), @MyRes.IfYouDontHaveProfile.
+    </p>
+}
+</section>
+
+
+
